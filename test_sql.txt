@@ -6,9 +6,13 @@ Importez le fichier SQL "catalogue.sql" dans une base de donnée nommée "catalo
 
 
 
-SELECT `id`,`titre`,`slug`,`image`,`prix`,`description`,`date_sortie`
-FROM `film`
-WHERE `date_sortie` >= 1960;
+SELECT *
+FROM film
+WHERE YEAR(date_sortie) > 1960;
+
+
+
+////////////////////
 
 
 
@@ -16,9 +20,13 @@ WHERE `date_sortie` >= 1960;
 
 
 
-SELECT `titre`
-FROM `film`
-WHERE `date_sortie` <= 1960;
+SELECT titre
+FROM film
+WHERE YEAR(date_sortie) < 1960;
+
+
+
+////////////////////////////////////////////////////////////////
 
 
 
@@ -27,7 +35,13 @@ WHERE `date_sortie` <= 1960;
 
 
 
-.
+UPDATE film
+SET description = 'changement de la description'
+WHERE id = 35;
+
+
+
+////////////////////////////////////////////////////////////////
 
 
 
@@ -36,7 +50,16 @@ WHERE `date_sortie` <= 1960;
 
 
 
-.
+INSERT INTO `film`(`titre`, `slug`, `image`, `prix`, `description`, `date_sortie`)
+VALUES ('Docteur Strange MoM','dr-strange-mom','1779137.png','20','Voyagez dans l inconnu a\vec le Docteur St\range, qui, avec l aide d alliés mys\tiques anciens et nouveaux, traverse les dangereuses et hallucinantes réalités alternatives du Multivers pour\ affronter un nouvel adversaire mystérieux.','2022-05-04');
+
+INSERT INTO `films_categs`(`id_film`, `id_categorie`) VALUES ('44','49');
+INSERT INTO `films_categs`(`id_film`, `id_categorie`) VALUES ('44','51');
+INSERT INTO `films_categs`(`id_film`, `id_categorie`) VALUES ('44','52');
+
+
+
+////////////////////////////////////////////////////////////////
 
 
 
@@ -50,12 +73,21 @@ WHERE `date_sortie` <= 1960;
 
 
 
+////////////////////////////////////////////////////////////////
+
+
+
 5]
 -Supprimez le film dont le slug commence par "t"
 
 
 
-.
+DELETE FROM film 
+WHERE slug LIKE 't%';
+
+
+
+////////////////////////////////////////////////////////////////
 
 
 
@@ -69,12 +101,20 @@ WHERE `date_sortie` <= 1960;
 
 
 
+////////////////////////////////////////////////////////////////
+
+
+
 7]
 -Récupérez tous les champs des films de la catégorie dont l'ID est 51
 
 
 
 .
+
+
+
+////////////////////////////////////////////////////////////////
 
 
 
@@ -87,12 +127,20 @@ WHERE `date_sortie` <= 1960;
 
 
 
+////////////////////////////////////////////////////////////////
+
+
+
 9]
 -Récupérez tous les films sortis au mois de juin
 
 
 
 .
+
+
+
+////////////////////////////////////////////////////////////////
 
 
 
